@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>TAJO</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/solarized.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+          <h1>EMPRESA TAJO</h1>
+          <h2>Propuesta de modernización de la infraestructura</h2>
+          <h2>Servicios en la nube. AWS</h2>
+        </section>
+        <section>
+          <p>Servicios a implementar:</p>
+          <ul>
+            <li class="fragment">Migración de la BBDD</li>
+            <li class="fragment">Generación de informes</li>
+            <li class="fragment">Sistema aprendizaje para recomendaciones</li>
+            <li class="fragment">Recomendaciones en la web</li>
+            <li class="fragment">Envío de correos mensuales</li>
+          </ul>
+        </section>
+        <section>
+          <section>
+            <h1>Migración de la BBDD</h1>
+            <p class="fragment">La actual base de datos de la empresa va a ser migrada a una alojada en la infraestructura de AWS</p>
+          </section>
+          <section>
+            <p>De entre todos los tipos de base de datos se que ofrece AWS se ha elegido utilizar RDS por los siguientes motivos:</p>
+            <ul>
+              <li class="fragment">La base de datos actual es relacional. La migración sería por tanto más sencilla</li>
+              <li class="fragment">Las aplicaciones que hacen uso de la actual base de datos no necesitarán realizar ningún cambio en su implementación</li>
+              <li class="fragment">No requerirá formación extra a los usuarios de estas bases de datos (administradores)</li>
+              <li class="fragment">El volumen de datos y su uso no parece justificar el uso de otro tipo de base de datos</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Generación de informes</h1>
+            <p class="fragment">Se quiere realizar informes de manera automática tanto dos vecea al día como de manera mensual utilizando una solución basada en un cluster de Hadoop</p>
+          </section>
+          <section>
+            <p>Para esta solución se utilizarán varios servicios de AWS</p>
+            <ul>
+              <li class="fragment">EMR: Servicio en el que ejecturá el procesamiento sobre un cluster de Hadoop</li>
+              <li class="fragment">S3: Sistema de almacenamiento de datos. Se utilizará como paso zona de stage del procesamiento y como backup de informes</li>
+              <li class="fragment">Data Pipeline: Orquestador que se encargará de automatizar el procesamiento</li>
+            </ul>
+          </section>
+          <section>
+            <p>Diagrama del proceso:</p>
+            <p>Este procesamiento se llevará a cabo:</p>
+            <ul class="fragment">
+              <li>Dos veces al día</li>
+              <li>El último día de més</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Sistema de aprendizaje para recomendaciones</h2>
+            <p class="fragment">Utilizando tecnologías de Machine Learning (ML) se desea disponer de un sistema de recomendaciones. Este sistema será usado por otras aplicaciones de la compañía.</p>
+          </section>
+          <section>
+            <p>AWS dispone de un servicio de ML. Este servicio, además de generar un modelo de predición, también proporciona una API a la que poder realizar consultas.</p>
+            <p>Para el procedimiento completo se necesitará hacer uso de los siguientes servicios de AWS:</p>
+            <ul>
+              <li>S3 y Data Pipeline de manera similar a lo visto en la Generación de infores</li>
+              <li>Amazon Machine Learning: Encargado de generar el modelo y realizar prediciones</li>
+              <li>Lambda: Servicio que permite la ejecución de código de manera puntual</li>
+            </ul>
+          </section>
+          <section>
+            <p>Con el fín de las predicines sean cada vez más precisas. Se hará un "reentreno" del modelo cada noche. El encargado de iniciarlo será el servicio Data Pipeline, el cuál recogerá la información de la BD y la almacenará en S3. A continuación, trasnmitirá estos datos al servicio de lambda. Será el código que se ejecute en lambda, a través de la API de ML, el que se encargue de lanzar el entrenamiento.</p>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Recomendaciones en la web</h2>
+            <p class="fragment">Utilizando el modelo generado anteriormente, y graciás a la API que ofrece para realizar prediciones en tiempo real, se hará recomendaciones al usuario al entrar en la página.</p>
+          </section>
+			  </section>
+      </div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
