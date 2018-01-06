@@ -1,9 +1,7 @@
 {
-  "name": "reveal.js",
+  "name": "TAJO",
   "version": "3.6.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "http://revealjs.com",
-  "subdomain": "revealjs",
+  "description": "AWS proposal",
   "main": "js/reveal.js",
   "scripts": {
     "test": "grunt test",
@@ -11,13 +9,13 @@
     "build": "grunt"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "http://hakim.se"
+    "name": "Cesar Gonzalez Fernandez",
+    "email": "cesar.gon.fer@gmail.com",
+    "web": "https://github.com/sariogonfer"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "https://github.com/sariogonfer/Master-Data-Science---AWS-Proposal"
   },
   "engines": {
     "node": ">=4.0.0"
