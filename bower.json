@@ -5,18 +5,17 @@
     "js/reveal.js",
     "css/reveal.css"
   ],
-  "homepage": "http://revealjs.com",
   "license": "MIT",
-  "description": "The HTML Presentation Framework",
+  "description": "AWS Proposal",
   "authors": [
-    "Hakim El Hattab <hakim.elhattab@gmail.com>"
+    "Cesar Gonzalez Fernandez <cesar.gon.fer@gmail.com>"
   ],
   "dependencies": {
     "headjs": "~1.0.3"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "https://github.com/sariogonfer/Master-Data-Science---AWS-Proposal"
   },
   "ignore": [
     "**/.*",
