@@ -70,6 +70,7 @@
           </section>
           <section>
             <p>Diagrama del proceso:</p>
+            <img data-src="./img/diagrams/reports.png">
             <p>Este procesamiento se llevará a cabo:</p>
             <ul class="fragment">
               <li>Dos veces al día</li>
@@ -93,6 +94,10 @@
           </section>
           <section>
             <p>Con el fín de las predicines sean cada vez más precisas. Se hará un "reentreno" del modelo cada noche. El encargado de iniciarlo será el servicio Data Pipeline, el cuál recogerá la información de la BD y la almacenará en S3. A continuación, trasnmitirá estos datos al servicio de lambda. Será el código que se ejecute en lambda, a través de la API de ML, el que se encargue de lanzar el entrenamiento.</p>
+          </section>
+          <section>
+            <p>A continuación se muestra un diagrama del sistema:</p>
+            <img data-src="./img/diagrams/training.png">
           </section>
         </section>
         <section>
@@ -126,6 +131,7 @@
           </section>
           <section>
             <p>En el siguiente diagrama se muestra la interacción entre los diferentes servicios:</p>
+            <img data-src="./img/diagrams/mails.png">
           </section>
 			  </section>
         <section>
